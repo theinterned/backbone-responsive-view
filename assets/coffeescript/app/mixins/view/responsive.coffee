@@ -32,4 +32,12 @@ define( [
 
       Enquire.listen() if breakpoints and settings.listen
       return @
+
+    enquireListen: (delay=500) -> 
+      Enquire.listen(delay)
+      return @
+
+    enquireFire: -> 
+      Enquire.fire()
+      return @
 )

@@ -48,8 +48,17 @@ This example shows a number of things:
 Behind the scenes, a call to ResponsiveView.enquire() does two things: 
 1. Registeres all the callbacks supplied in `breakpoints` with Enquaire.js
 2. calls `enquire.listen()` (and implicitly `enquire.fire()`) to start listening for viewport changes.
+
 If, for whatver reason, you don't want to start listening for viewport changes right away, or you want to fire the callbacks yourself, you can pass `{ listen : false }` as the second argument to `ResponsiveView.enquire()`:
 
 ```javascript
 this.enquire(true, {listen:false});
 ```
+
+### `ResponsiveView.enquireListen(delay=500ms)` ###
+
+If you have have delayed listening for viewport changes by passing `{listen : false}` to ResponsiveView.enquire, then you will have to manually start listening for viewport changes by calling `ResponsiveView.enquireListen()`. `enquireListen` takes one optional argument which is the number of millisconds to wait for there to be no resize or orientation events before firing the media queries (just as in Enquire.js).
+
+### `ResponsiveView.enquireFire()` ###
+
+Simply calls `enquire.fire()` to evaluate each registered media query immediately.
