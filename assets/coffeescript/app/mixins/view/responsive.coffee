@@ -26,10 +26,10 @@ define( [
 
       console.log "enquiring", breakpoints
       for breakpoint, handler of breakpoints
-        console.log breakpoint, handler
         if typeof handler is "string"
-          handler = match:@[handler]
+          handler = @[handler]
         Enquire.register(breakpoint, handler)
 
       Enquire.listen() if breakpoints and settings.listen
+      return @
 )
