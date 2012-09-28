@@ -16,7 +16,7 @@ define([
           deferSetup: true
 
       initialize: (options) ->
-        @enquire("break")
+        @enquire("break", {listen:false}).enquireListen()
         return @
       
       render: ->
