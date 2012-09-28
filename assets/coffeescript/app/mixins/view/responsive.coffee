@@ -1,8 +1,8 @@
 define( [
+  'underscore'
   'lib/enquire'
-  'jquery'
   ], 
-  (Enquire) ->
+  (_, Enquire) ->
     # Call this method somewhere in your View (most likey in your initialize or
     # render method) to set up the breakpoint observers
     #
@@ -18,8 +18,10 @@ define( [
     #
     # breakpoints: 
     #   
-    enquire: (breakpoints = @breakpoints) ->
+    enquire: (breakpoints = @breakpoints, options) ->
+      settings = _.extend { listen:true }, options
       breakpoints = @[breakpoints] if typeof breakpoints is "string"
+      breakpoints = @breakpoints if breakpoints is true
       return unless typeof breakpoints is "object"
 
       console.log "enquiring", breakpoints
@@ -29,5 +31,5 @@ define( [
           handler = match:@[handler]
         Enquire.register(breakpoint, handler)
 
-      Enquire.listen() if breakpoints
+      Enquire.listen() if breakpoints and settings.listen
 )

@@ -41,10 +41,15 @@ This example shows a number of things:
 
 ## Going a little deeper
 
-### `ResponsiveView.enquire(breakpoints)`
+### `ResponsiveView.enquire(breakpoints, options)`
 
-`ResponsiveView.enquire()` takes one optional argument: `breakpoints`. `breakpoints` can either be the name of another property to use as the 'breakpoints' hash as a string or a `breakpoints` hash can be supplied directly. If no argument is supplied then ResponsiveView will look for a property called `breakpoints` (the default behaviour).
+`ResponsiveView.enquire()` takes an optional argument: `breakpoints`. `breakpoints` can either be the string name of a member property to use as the 'breakpoints' hash or a `breakpoints` hash can be supplied directly. If no argument is supplied then ResponsiveView will look for a property called `breakpoints` (the default behaviour). Finally, you can pass `true` as the first argument to `ResponsiveView.enquire()` which tells ResponsiveView to use the `breakpoints` member property (this is useful for passing options in the second argument to enquire);
 
 Behind the scenes, a call to ResponsiveView.enquire() does two things: 
 1. Registeres all the callbacks supplied in `breakpoints` with Enquaire.js
 2. calls `enquire.listen()` (and implicitly `enquire.fire()`) to start listening for viewport changes.
+If, for whatver reason, you don't want to start listening for viewport changes right away, or you want to fire the callbacks yourself, you can pass `{ listen : false }` as the second argument to `ResponsiveView.enquire()`:
+
+```javascript
+this.enquire(true, {listen:false});
+```
