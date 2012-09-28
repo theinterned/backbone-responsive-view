@@ -6,6 +6,9 @@ require.config(
     tpl: 'lib/requirejs/tpl'
     templates: '../templates'
     # App:        'app'
+  shim:
+    'lib/enquire':
+      exports: 'enquire'
 )
 
 require [

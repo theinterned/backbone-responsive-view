@@ -1,12 +1,31 @@
 define([
   'app/base/view'
+  'app/mixins/view/responsive'
   'tpl!templates/test.tpl'
   ],
-  (BaseView, template) ->
+  (BaseView, ResponsiveViewMixin, template) ->
 
     class TestView extends BaseView
+      break:
+        "screen and (min-width:400px)": "atFourHundredPx"
+        "screen and (max-width:800px)": -> console.log "smaller than 800px"
+        "screen and (min-width:1000px)": 
+          match: -> console.log "bigger than 1000px"
+          unmatch: -> console.log "smaler than 1000px"
+          setup: -> console.log "setup for screen and (min-width:1000px) called"
+          deferSetup: true
+
+      initialize: (options) ->
+        @enquire("break")
+        return @
       
       render: ->
         @$el.html template( message:"Hello World!" )
         return @
+
+      atFourHundredPx: -> console.log "bigger than four hundred px"
+
+    _.extend TestView::, ResponsiveViewMixin
+
+    return TestView
 )
