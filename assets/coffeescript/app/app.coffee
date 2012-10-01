@@ -9,7 +9,7 @@ define([
       routes: 
         "*any": "any"
       initialize: -> 
-        console.log "hello world", @
+        console.log "    hello world", @
         $('body').append new TestView().render().el
-      any: -> console.log 'any route'
+      any: (page) -> console.log '    route', page
 )
