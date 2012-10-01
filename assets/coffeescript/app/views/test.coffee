@@ -7,7 +7,7 @@ define([
 
     class TestView extends BaseView
       break:
-        "screen and (min-width:400px)": "atFourHundredPx"
+        "screen and (min-width:500px)": "atFiveHundredPx"
         "screen and (max-width:800px)": -> console.log "< 800px"
         "screen and (min-width:1000px)": 
           match: -> console.log "> 1000px"
@@ -23,7 +23,7 @@ define([
         @$el.html template( message:"Hello World!" )
         return @
 
-      atFourHundredPx: -> console.log "> 400px"
+      atFiveHundredPx: -> console.log "> 500px"
 
     _.extend TestView::, ResponsiveViewMixin
 
