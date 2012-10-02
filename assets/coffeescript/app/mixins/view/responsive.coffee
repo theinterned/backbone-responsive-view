@@ -20,8 +20,7 @@ define( [
     #   
     enquire: (breakpoints = @breakpoints, options) ->
       settings = _.extend { listen:true }, options
-      breakpoints = @[breakpoints] if typeof breakpoints is "string"
-      breakpoints = @breakpoints if breakpoints is true
+      breakpoints = @_getBreakpoints breakpoints
       return unless typeof breakpoints is "object"
 
       console.log "enquiring", breakpoints
@@ -40,4 +39,19 @@ define( [
     enquireFire: -> 
       Enquire.fire()
       return @
+
+    unenquire: (breakpoints = @breakpoints, options) ->
+      breakpoints = @_getBreakpoints breakpoints
+      console.log breakpoints
+      for breakpoint, handler of breakpoints
+        if typeof handler is "string"
+          handler = @[handler]
+        Enquire.unregister(breakpoint, handler)
+
+
+    _getBreakpoints: (breakpoints) ->
+      breakpoints = @[breakpoints] if typeof breakpoints is "string"
+      breakpoints = @breakpoints if breakpoints is true
+      return breakpoints
+
 )
