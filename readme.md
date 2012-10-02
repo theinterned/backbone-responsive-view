@@ -42,7 +42,7 @@ This example shows a number of things:
   3. Any of the acceptable handler arguments that enquire.register() can handle *(lines 6 — 11)*. [See the Enquire.js docs](http://wickynilliams.github.com/enquire.js/) for more info.
 5. If the value is either the name of a method or a function it will be called whenever the media query is matched. (See the Enquire.js docs for how to supply a match and unmatch handler if you are supplying the `callback` in the thrid form)
 6. To start subscribing to media query changes, you need to call `this.enquire()` somewhere in your code *(line 13)*. Depending on how and when your view is added to the page, you will likely want to do this in either the `initialize` or `render` method of your view.
-7. You can unsubscribe from media query changes by calling `this.unenquire()` *(line 17)*. This delegates to enquire.js' `enquire.destroy()` for each query handler in `this.breakpoints` (see below for more).
+7. You can unsubscribe from media query changes by calling `this.unenquire()` *(line 17)*. This delegates to enquire.js' `enquire.unregister(mediaquery, callback)` for each query handler in `this.breakpoints` (see below for more).
 
 ## Going a little deeper
 
@@ -70,11 +70,11 @@ Simply calls `enquire.fire()` to evaluate each registered media query immediatel
 
 ### `ResponsiveView.unenquire(breakpoints, breakpoint)` ###
 
-`ResponsiveView.unenquire()` delegates to `enquire.delete(). By default `unenquire`, called with no arguments, will loop through all the query handlers in `this.breakpoints` and call enquire.delete(key, value) on each one.
+`ResponsiveView.unenquire()` delegates to `enquire.unregister(). By default `unenquire`, called with no arguments, will loop through all the query handlers in `this.breakpoints` and call enquire.unregister(key, value) on each one.
 
 You may supply a different `breapoints` hash as the optional first argument. This can take any of the forms outlined for `ResponsiveView.enquire(breakpoints)`. 
 
-If you pass `false` as the first argument, you can pass an individual media query to unsubscribe as the second argument. This is equivalent to calling `enquire.delete("some media query")` (without the callback second argument) and alows you to unsubscribe all callbacks from a particular query at once:
+If you pass `false` as the first argument, you can pass an individual media query to unsubscribe as the second argument. This is equivalent to calling `enquire.unregister("some media query")` (without the callback second argument) and alows you to unsubscribe all callbacks from a particular query at once:
 
 ```javascript
 this.unenquire(false, "screen and (max-width: 500px)");
