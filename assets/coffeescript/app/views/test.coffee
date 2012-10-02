@@ -17,21 +17,30 @@ define([
           destroy: -> console.log "removing handler for screen and (min-width:1000px)"
 
       events:
-        "click #leave": "leave"
+        "click #remove": "remove"
+        "click #reset": "reset"
 
       initialize: (options) ->
         @enquire("break", {listen:false}).enquireListen()
-        @enquire "screen and (min-width:500px)": -> console.log "another call back for 500px"
+        @enquire "screen and (min-width:500px)": -> console.log "another callback for 500px"
         return @
       
       render: ->
         @$el.html template( message:"Hello World!" )
-        @$el.append _.template("<button id='leave'>leave</button>")
+        @$el.append "<button id='remove'>remove</button>"
         return @
 
       atFiveHundredPx: -> console.log "> 500px"
 
-      leave: => @unenquire "screen and (min-width:500px)": "atFiveHundredPx"
+      remove: => 
+        @unenquire "break"
+        @unenquire false, "screen and (min-width:500px)"
+        @$('#remove').remove()
+        @$el.append "<button id='reset'>reset</button>"
+
+      reset: =>
+        @$el.html("")
+        @initialize().render()
 
     _.extend TestView::, ResponsiveViewMixin
 
