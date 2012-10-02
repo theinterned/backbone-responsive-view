@@ -40,13 +40,15 @@ define( [
       Enquire.fire()
       return @
 
-    unenquire: (breakpoints = @breakpoints, options) ->
-      breakpoints = @_getBreakpoints breakpoints
-      console.log breakpoints
-      for breakpoint, handler of breakpoints
-        if typeof handler is "string"
-          handler = @[handler]
-        Enquire.unregister(breakpoint, handler)
+    unenquire: (breakpoints = @breakpoints, breakpoint) ->
+      if breakpoints is false 
+        Enquire.unregister breakpoint
+      else
+        breakpoints = @_getBreakpoints breakpoints
+        for breakpoint, handler of breakpoints
+          if typeof handler is "string"
+            handler = @[handler]
+          Enquire.unregister(breakpoint, handler)
 
 
     _getBreakpoints: (breakpoints) ->
