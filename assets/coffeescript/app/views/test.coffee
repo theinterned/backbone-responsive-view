@@ -6,6 +6,9 @@ define([
   (BaseView, ResponsiveViewMixin, template) ->
 
     class TestView extends BaseView
+      removeTemplate: "<button id='remove'>Remove Media Queries</button>"
+      resetTemplate:  "<button id='reset'>Reset Media Queries</button>"
+      
       break:
         "screen and (min-width:500px)": "atFiveHundredPx"
         "screen and (max-width:800px)": -> console.log "< 800px"
@@ -27,7 +30,7 @@ define([
       
       render: ->
         @$el.html template( message:"Hello World!" )
-        @$el.append "<button id='remove'>remove</button>"
+        @$el.append @removeTemplate
         return @
 
       atFiveHundredPx: -> console.log "> 500px"
@@ -36,7 +39,7 @@ define([
         @unenquire "break"
         @unenquire false, "screen and (min-width:500px)"
         @$('#remove').remove()
-        @$el.append "<button id='reset'>reset</button>"
+        @$el.append @resetTemplate
 
       reset: =>
         @$el.html("")
