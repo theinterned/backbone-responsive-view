@@ -71,7 +71,7 @@ Simply delegates to `enquire.fire()` to evaluate each registered media query imm
 
 ### `ResponsiveView.unenquire(breakpoints, breakpoint)` ###
 
-`ResponsiveView.unenquire()` delegates to `enquire.unregister(). By default `unenquire`, called with no arguments, will loop through all the query handlers in `this.breakpoints` and call enquire.unregister(key, value) on each one.
+`ResponsiveView.unenquire()` delegates to `enquire.unregister()`. By default `unenquire`, called with no arguments, will loop through all the query handlers in `this.breakpoints` and call enquire.unregister(key, value) on each one.
 
 You may supply a different `breapoints` hash as the optional first argument. This can take any of the forms outlined above for `ResponsiveView.enquire(breakpoints)`. 
 
