@@ -1,6 +1,6 @@
 # Backbone Responsive View
 
-A [Backbone.js](http://backbonejs.org) view mixin that integrates [Enquire.js](http://wickynilliams.github.com/enquire.js/) and allows declaritive media query callbacks in a style that should be comfortable to those familiar with Backbone Views DOM event handling.
+A [Backbone.js](http://backbonejs.org) view mixin that integrates [Enquire.js](http://wickynilliams.github.com/enquire.js/) and allows declaritive media query callbacks in a style that should be comfortable to those familiar with Backbone.View's DOM event handling.
 
 ## A Simple Example:
 
