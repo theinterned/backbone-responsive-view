@@ -6,7 +6,7 @@ License: MIT (http://www.opensource.org/licenses/mit-license.php)
 
 define( [
   'underscore'
-  'lib/enquire'
+  'enquire'
   ], 
   (_, Enquire) ->
 
@@ -59,6 +59,9 @@ define( [
         for breakpoint, handler of breakpoints
           if typeof handler is "string"
             handler = @[handler]
+          else if typeof handler is "object"
+            for method in ['match', 'unmatch', 'setup', 'destroy']
+              handler[method] = @[handler[method]] if typeof handler[method] is "string"
           Enquire.register(breakpoint, handler)
 
         Enquire.listen() if breakpoints and settings.listen

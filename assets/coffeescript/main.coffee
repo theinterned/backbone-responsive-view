@@ -5,9 +5,10 @@ require.config(
     backbone:   'lib/backbone'
     tpl: 'lib/requirejs/tpl'
     templates: '../templates'
+    enquire: 'lib/enquire'
     # App:        'app'
   shim:
-    'lib/enquire':
+    'enquire':
       exports: 'enquire'
 )
 

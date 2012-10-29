@@ -18,6 +18,9 @@ define([
           setup: -> console.log "setup for screen and (min-width:1000px) called"
           deferSetup: true
           destroy: -> console.log "removing handler for screen and (min-width:1000px)"
+        "screen and (min-width:900px)": 
+          match: "matchNineHundred"
+          unmatch:  "unmatchNineHundred"
 
       events:
         "click #remove": "remove"
@@ -34,6 +37,10 @@ define([
         return @
 
       atFiveHundredPx: -> console.log "> 500px"
+
+      matchNineHundred: -> console.log "> 900"
+
+      unmatchNineHundred: -> console.log "< 900"
 
       remove: => 
         @unenquire "break"
