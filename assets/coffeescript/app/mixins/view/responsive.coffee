@@ -1,5 +1,5 @@
 ###
-Backbone Responsive View Mixin v1.0.0 - Backbone wrapper for enquire.js
+Backbone Responsive View Mixin v1.0.1 - Backbone wrapper for enquire.js
 Copyright (c) 2012 Ned Schwartz - https://github.com/theinterned/backbone-responsive-view
 License: MIT (http://www.opensource.org/licenses/mit-license.php)
 ###
