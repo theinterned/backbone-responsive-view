@@ -68,9 +68,9 @@ this.unenquire(false, "screen and (max-width: 500px)");
 ```
 
 # Changelog
-## v2.0.0 — Upgrade to Enquire.js v2.0.1 compatibility
-- Upgraded the Enquire.js version
-- Dropped the use of enquire.listen() and enquire.fire() by the ResponsiveView mixin.
+## v2.0.0 — Enquire.js v2.0.1 Compatibility
+- Upgraded the Enquire.js version from 1.4.0 to 2.0.1
+- ResponsiveView mixin no longer uses enquire.listen() and enquire.fire().
 
 ## v1.0.0 — Initial release
 - Tested with Backbone 0.9.2 and Responsive.js 1.4.0
