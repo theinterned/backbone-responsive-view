@@ -8,17 +8,17 @@ define([
     class TestView extends BaseView
       removeTemplate: "<button id='remove'>Remove Media Queries</button>"
       resetTemplate:  "<button id='reset'>Reset Media Queries</button>"
-      
+
       break:
         "screen and (min-width:500px)": "atFiveHundredPx"
         "screen and (max-width:800px)": -> console.log "< 800px"
-        "screen and (min-width:1000px)": 
+        "screen and (min-width:1000px)":
           match: -> console.log "> 1000px"
           unmatch: -> console.log "< 1000px"
           setup: -> console.log "setup for screen and (min-width:1000px) called"
           deferSetup: true
           destroy: -> console.log "removing handler for screen and (min-width:1000px)"
-        "screen and (min-width:900px)": 
+        "screen and (min-width:900px)":
           match: "matchNineHundred"
           unmatch:  "unmatchNineHundred"
 
@@ -27,10 +27,10 @@ define([
         "click #reset": "reset"
 
       initialize: (options) ->
-        @enquire("break", {listen:false}).enquireListen()
+        @enquire "break"
         @enquire "screen and (min-width:500px)": -> console.log "another callback for 500px"
         return @
-      
+
       render: ->
         @$el.html template( message:"Hello World!" )
         @$el.append @removeTemplate
@@ -42,7 +42,7 @@ define([
 
       unmatchNineHundred: -> console.log "< 900"
 
-      remove: => 
+      remove: =>
         @unenquire "break"
         @unenquire false, "screen and (min-width:500px)"
         @$('#remove').remove()

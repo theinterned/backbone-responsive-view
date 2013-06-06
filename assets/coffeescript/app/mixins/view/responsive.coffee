@@ -46,12 +46,8 @@ define( [
               `breakpoints`. Otherwise can be a passed object, the string name
               of an alternate member property to use. Set to `true` to alow using
               the default value while supplying options in the second argument
-      @param  [options.listen=true] {Boolean} If set to false don't start
-              listening for screen width and orientation changes via
-              enquire.listen
       ###
       enquire: (breakpoints = @breakpoints, options) ->
-        settings = _.extend { listen:true }, options
         breakpoints = @_getBreakpoints breakpoints
         return unless typeof breakpoints is "object"
 
@@ -64,33 +60,6 @@ define( [
               handler[method] = @[handler[method]] if typeof handler[method] is "string"
           Enquire.register(breakpoint, handler)
 
-        Enquire.listen() if breakpoints and settings.listen
-        return @
-
-      ###*
-      sets up listeners for resize and orientation events, useful if you called
-      `enquire()` with `options.listen = false`. Delegates to `enquire.listen()`.
-
-      @method enquireListen
-      @chainable
-      @param [delay=500] {int} the time (in milliseconds) after which the queries should be handled
-      ###
-      enquireListen: (delay=500) ->
-        Enquire.listen(delay)
-        return @
-
-      ###*
-      Tests all media queries and calls relevant methods depending whether
-      transitioning from unmatched->matched or matched->unmatched. Delegates to
-      `enquire.fire()`.
-
-      @method enquireFire
-      @chainable
-      @param [e] {Event} if fired as a result of a browser event,
-      an event can be supplied to propagate to the various media query handlers
-      ###
-      enquireFire: (e) ->
-        Enquire.fire(e)
         return @
 
       ###*
