@@ -66,3 +66,11 @@ If you pass `false` as the first argument, you can pass an individual media quer
 ```javascript
 this.unenquire(false, "screen and (max-width: 500px)");
 ```
+
+# Changelog
+## v2.0.0 — Upgrade to Enquire.js v2.0.1 compatibility
+- Upgraded the Enquire.js version
+- Dropped the use of enquire.listen() and enquire.fire() by the ResponsiveView mixin.
+
+## v1.0.0 — Initial release
+- Tested with Backbone 0.9.2 and Responsive.js 1.4.0
